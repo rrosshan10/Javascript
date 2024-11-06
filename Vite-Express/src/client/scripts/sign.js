@@ -31,7 +31,7 @@ function myMenuFunction() {
 }
 function loginPage(){
   let a = document.createElement('a');
-  a.href = "./login.html"
+  a.href = "/login"
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

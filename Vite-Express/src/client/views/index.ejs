@@ -4,14 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/style.css" />
     <title>Movies HR</title>
   </head>
   <body>
     <div class="wrapper">
-      <%- include("../partials/navbar") %> <!-- Include navbar -->
+      <%- include("../partials/navbar") %>
+      <!-- Include navbar -->
+
+      <div class="form-box">
+        <%- include("../partials/login") %> 
+        <%- include("../partials/register")%>
+      </div>
     </div>
-    <script src="../scripts/sign.js"></script>
   </body>
 </html>

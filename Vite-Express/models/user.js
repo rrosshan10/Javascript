@@ -6,11 +6,13 @@ const UserSchema = new mongoose.Schema(
         first_name: {
             type: String,
             required: "Your firstname is required",
+            min:2,
             max: 25,
         },
         last_name: {
             type: String,
             required: "Your lastname is required",
+            min:2,
             max: 25,
         },
         email: {
@@ -23,32 +25,12 @@ const UserSchema = new mongoose.Schema(
         password: {
             type: String,
             required: "Your password is required",
-            select: false,
             max: 25,
-        },
-        role: {
-            type: String,
-            required: true,
-            default: "0x01",
         },
     },
     { timestamps: true }
 );
 
-UserSchema.pre("save", function (next) {
-    const user = this;
+const UserLogin = mongoose.model("UserLogin", UserSchema, "user_login");
 
-    if (!user.isModified("password")) return next();
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) return next(err);
-
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) return next(err);
-
-            user.password = hash;
-            next();
-        });
-    });
-});
-
-export default mongoose.model("users", UserSchema);
+export default UserLogin;

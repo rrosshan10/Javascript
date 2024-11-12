@@ -1,31 +1,32 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 
 const UserSchema = new mongoose.Schema(
     {
         first_name: {
             type: String,
-            required: "Your firstname is required",
-            min:2,
-            max: 25,
+            required: [true, "Your firstname is required"],
+            minlength: 2,
+            maxlength: 25,
         },
         last_name: {
             type: String,
-            required: "Your lastname is required",
-            min:2,
-            max: 25,
+            required: [true, "Your lastname is required"],
+            minlength: 2,
+            maxlength: 25,
         },
         email: {
             type: String,
-            required: "Your email is required",
+            required: [true, "Your email is required"],
             unique: true,
             lowercase: true,
             trim: true,
+            match: [/.+@.+\..+/, "Please enter a valid email address"],
         },
         password: {
             type: String,
-            required: "Your password is required",
-            max: 25,
+            required: [true, "Your password is required"],
+            minlength: 6,  // Recommended minimum length
+            maxlength: 500,
         },
     },
     { timestamps: true }
